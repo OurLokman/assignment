@@ -9,58 +9,66 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: Homepage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class Homepage extends StatelessWidget {
+  const Homepage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Greeting App'),
+        title: const Text('Text Styling App'),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Hello World!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                  fontSize: 22,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Flutter Text Styling',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+            ),
+            const SizedBox(height: 15),
+            const Text(
+              'Experiment with text styles',
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+            ),
+            const SizedBox(height: 15),
+            TextButton(
+              onPressed: () {
+                final snackbar = const SnackBar(
+                  content: Text('You clicked the button!'),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackbar);
+              },
+              child: const Text('Click me'),
+            ),
+            const SizedBox(height: 15),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Welcome to',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                 ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Welcome to Flutter!',
-                style: TextStyle(fontSize: 20.0),
-              ),
-              const SizedBox(height: 20),
-              Image.asset('assets/images/flutter-logo2.png',
-              height: 150,
-              width: 150,),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  final snackbar = SnackBar(
-                    content: Text('Button pressed!'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                },
-                child: Text('Press me'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                SizedBox(
+                  width: 5.0,
                 ),
-              ),
-            ],
-          ),
+                Text(
+                  'Flutter!',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Colors.blue),
+                )
+              ],
+            )
+          ],
         ),
       ),
     );
